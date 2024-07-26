@@ -46,10 +46,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device:  /Users/enaam/Desktop/data/db
+      device:  /home/kali/Desktop/data/db
 
   wp:
     driver_opts:
       o: bind
       type: none
-      device:  /Users/enaam/Desktop/data/wp
+      device:  /home/kali/Desktop/data/wp
