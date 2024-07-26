@@ -6,7 +6,7 @@ mysql_install_db
 # start mariadb in safe mode as a background process
 # mysqld_safe : script that wraps ` mysqld` to handle some initialization tasks
 # restart the server if crashes
-mysqld_safe  &
+mysqld_safe &
 
 sleep 5
 

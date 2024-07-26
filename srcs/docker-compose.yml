@@ -5,6 +5,7 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/
+    image: mariadb:mahdi
     env_file:
       - .env
     volumes:
@@ -15,6 +16,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx/
+    image: nginx:mahdi
     ports:
       - 443:443
     env_file:
@@ -29,6 +31,7 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/
+    image: wordpress:mahdi
     env_file:
       - .env
     volumes:
@@ -43,10 +46,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device:  /Users/enaam/Desktop/Inception/srcs/data/db
+      device:  /Users/enaam/Desktop/data/db
 
   wp:
     driver_opts:
       o: bind
       type: none
-      device:  /Users/enaam/Desktop/Inception/srcs/data/wp
+      device:  /Users/enaam/Desktop/data/wp
