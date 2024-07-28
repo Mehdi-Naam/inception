@@ -54,7 +54,7 @@ CMD [ "nginx", "-g", "daemon off;"]
                 # << L =KH >>: the location.
                 # << O =1337>: the Organization
                 # << OU=std>>: the Organization Unit (*student)
-                # << CN=zakbouha.42.ma >: the common name
+                # << CN=enaam.42.ma >: the common name
     # N.B :
         # after run this command the self-signed SSL/TLS certificate and private key will gen and stored on the
         # specified files.
