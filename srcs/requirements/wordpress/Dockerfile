@@ -34,8 +34,6 @@ RUN chmod +x s_wordpress.sh
 
 CMD [ "./s_wordpress.sh" ]
 
-
-
 # N.B:
     # The line where we change the listen to port 9000 is Important
     # PHP-FPM: usually listens on a UnixSocket, this is efficient when PHP and

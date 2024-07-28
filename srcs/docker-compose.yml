@@ -59,10 +59,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /Users/enaam/Desktop/data/db
+      device: /home/enaam/Desktop/data/db
   
   wordPress:
     driver_opts:
       o: bind
       type: none
-      device: /Users/enaam/Desktop/data/wp
+      device: /home/enaam/Desktop/data/wp
