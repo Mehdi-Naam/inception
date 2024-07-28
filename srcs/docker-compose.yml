@@ -1,55 +1,68 @@
-version: "3.8"
+version: '3.8'
+
 services:
 
-# Mariadb
+#mariadb
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/
-    image: mariadb:mahdi
+    image: mariadb:enaam
     env_file:
       - .env
+    expose:
+      - "3306"
+    networks:
+      - enaam_network
     volumes:
-      - db:/var/lib/mysql
+      - dataBase:/var/lib/mysql
     restart: always
 
-# Nginx
+#wordpress
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress/
+    image: wordpress:enaam
+    env_file:
+      - .env
+    expose:
+      - "9000"
+    volumes:
+      - wordPress:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - enaam_network
+    restart: always
+
+#nginx
   nginx:
     container_name: nginx
     build: ./requirements/nginx/
-    image: nginx:mahdi
+    image: nginx:enaam
     ports:
       - 443:443
     env_file:
       - .env
     depends_on:
       - wordpress
+    networks:
+      - enaam_network
     volumes:
-      - wp:/var/www/html/
+      - wordPress:/var/www/html
     restart: always
 
-# Wordpress
-  wordpress:
-    container_name: wordpress
-    build: ./requirements/wordpress/
-    image: wordpress:mahdi
-    env_file:
-      - .env
-    volumes:
-      - wp:/var/www/html/
-    depends_on:
-      - mariadb
-    restart: always
-
+networks:
+  enaam_network:
 
 volumes:
-  db:
+  dataBase:
     driver_opts:
       o: bind
       type: none
-      device:  /home/enaam/Desktop/data/db
-
-  wp:
+      device: /Users/enaam/Desktop/data/db
+  
+  wordPress:
     driver_opts:
       o: bind
       type: none
-      device:  /home/enaam/Desktop/data/wp
+      device: /Users/enaam/Desktop/data/wp
